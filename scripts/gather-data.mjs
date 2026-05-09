@@ -109,9 +109,14 @@ function parseArea(text) {
 	if (!text)
 		return null
 
-	// "64,589 sq km" -> 64589, "0.44 sq km" -> 0.44
-	const match = text.match(/^([\d,.]+)/)
-	return match ? parseFloat(match[1].replaceAll(',', '')) : null
+	// "64,589 sq km" -> 64589, "0.44 sq km" -> 0.44, "1.267 million sq km" -> 1267000
+	const match = text.match(/^([\d,.]+)(\s*million)?/)
+	if (!match)
+		return null
+
+	const value = parseFloat(match[1].replaceAll(',', ''))
+
+	return match[2] ? value * 1_000_000 : value
 }
 
 function parseElevation(text) {
