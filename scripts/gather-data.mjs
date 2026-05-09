@@ -71,11 +71,12 @@ for (const row of bindings) {
 			elevation: row.hpElev ? Math.round(parseFloat(row.hpElev.value)) : null,
 		}
 
-	if (entry.lowest === null && row.lp)
-		entry.lowest = {
-			name: row.lpLabel?.value ?? null,
-			elevation: row.lpElev ? Math.round(parseFloat(row.lpElev.value)) : null,
-		}
+	if (entry.lowest === null && row.lp) {
+		const elev = row.lpElev ? Math.round(parseFloat(row.lpElev.value)) : null
+		// discard submarine features — deepest exposed land is ~-430m (Dead Sea)
+		if (elev === null || elev >= -500)
+			entry.lowest = { name: row.lpLabel?.value ?? null, elevation: elev }
+	}
 }
 
 const entries = [...entityMap.values()]

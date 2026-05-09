@@ -93,10 +93,7 @@
 			"name": "Vinson Massif",
 			"elevation": 4892
 		},
-		"lowest": {
-			"name": "Bentley Subglacial Trench",
-			"elevation": -2555
-		}
+		"lowest": null
 	},
 	{
 		"name": "Antarctica",
@@ -105,10 +102,7 @@
 			"name": "Vinson Massif",
 			"elevation": 4892
 		},
-		"lowest": {
-			"name": "Bentley Subglacial Trench",
-			"elevation": -2555
-		}
+		"lowest": null
 	},
 	{
 		"name": "Antigua and Barbuda",
@@ -981,10 +975,7 @@
 			"name": "Mount Olympus",
 			"elevation": 2918
 		},
-		"lowest": {
-			"name": "Calypso Deep",
-			"elevation": -5269
-		}
+		"lowest": null
 	},
 	{
 		"name": "Greenland",
@@ -2176,7 +2167,7 @@
 		"area": 617.012867,
 		"highest": {
 			"name": "Mount Gimie",
-			"elevation": 952
+			"elevation": 950
 		},
 		"lowest": {
 			"name": "Caribbean Sea",

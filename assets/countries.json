@@ -738,10 +738,7 @@
 			"name": "Mount Olympus",
 			"elevation": 2918
 		},
-		"lowest": {
-			"name": "Calypso Deep",
-			"elevation": -5269
-		}
+		"lowest": null
 	},
 	{
 		"name": "Grenada",
@@ -1705,7 +1702,7 @@
 		"area": 617.012867,
 		"highest": {
 			"name": "Mount Gimie",
-			"elevation": 952
+			"elevation": 950
 		},
 		"lowest": {
 			"name": "Caribbean Sea",
