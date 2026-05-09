@@ -124,7 +124,7 @@ function parseElevation(text) {
 		return null
 
 	// "Tomanivi 1,324 m" -> { name: "Tomanivi", elevation: 1324 }
-	const match = text.match(/^(.+?)\s+([\d,]+)\s*m$/i)
+	const match = text.match(/^(.+?)\s+([\d,]+)\s*m/i)
 	if (!match)
 		return { name: text, elevation: null }
 

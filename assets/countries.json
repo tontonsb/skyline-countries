@@ -46,8 +46,8 @@
 		"area": 112622,
 		"landarea": 110622,
 		"highest": {
-			"name": "unnamed elevation 675 m; located 2.5 km southeast of the town of Kotopounga",
-			"elevation": null
+			"name": "unnamed elevation",
+			"elevation": 675
 		},
 		"lowest": {
 			"name": "Atlantic Ocean",
@@ -228,8 +228,8 @@
 		"area": 11300,
 		"landarea": 10120,
 		"highest": {
-			"name": "unnamed elevation 63 m; 3 km southeast of the town of Sabi",
-			"elevation": null
+			"name": "unnamed elevation",
+			"elevation": 63
 		},
 		"lowest": {
 			"name": "Atlantic Ocean",
@@ -830,8 +830,8 @@
 		"area": 268838,
 		"landarea": 264537,
 		"highest": {
-			"name": "Aoraki/Mount Cook 3,724 m; note - the mountain's height was 3,764 m until 14 December 1991 when it lost about 10 m in an avalanche of rock and ice; erosion of the ice cap since then has brought the height down another",
-			"elevation": 30
+			"name": "Aoraki/Mount Cook",
+			"elevation": 3724
 		},
 		"lowest": {
 			"name": "Pacific Ocean",
@@ -1208,8 +1208,8 @@
 		"area": 2724900,
 		"landarea": 2699700,
 		"highest": {
-			"name": "Pik Khan-Tengri 7,010 m<br>note - the northern most 7,000 meter peak in the World",
-			"elevation": null
+			"name": "Pik Khan-Tengri",
+			"elevation": 7010
 		},
 		"lowest": {
 			"name": "Qauyndy Oyysy -132 m",
@@ -2216,8 +2216,8 @@
 		"area": 21937,
 		"landarea": 21497,
 		"highest": {
-			"name": "Mitspe Shlagim 2,224 m; note - this is the highest named point, the actual highest point is an unnamed dome slightly to the west of Mitspe Shlagim at 2,236 m; both points are on the northeastern border of Israel, along the southern end of the Anti-Lebanon mountain range",
-			"elevation": null
+			"name": "Mitspe Shlagim",
+			"elevation": 2224
 		},
 		"lowest": {
 			"name": "Dead Sea -431 m",
@@ -2398,8 +2398,8 @@
 		"area": 9833517,
 		"landarea": 9147593,
 		"highest": {
-			"name": "Mount McKinley 6,190 m (highest point in North America)",
-			"elevation": null
+			"name": "Mount McKinley",
+			"elevation": 6190
 		},
 		"lowest": {
 			"name": "Death Valley (lowest point in North America) -86 m",
@@ -2454,8 +2454,8 @@
 		"area": 756102,
 		"landarea": 743812,
 		"highest": {
-			"name": "Nevado Ojos del Salado 6,893 m (highest volcano in the world)",
-			"elevation": null
+			"name": "Nevado Ojos del Salado",
+			"elevation": 6893
 		},
 		"lowest": {
 			"name": "Pacific Ocean",
