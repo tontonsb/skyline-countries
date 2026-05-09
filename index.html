@@ -6,19 +6,83 @@
 <title>Skyline and reflection countries</title>
 <meta name="description" content="Outlier countries on the area–highest elevation plot.">
 
+<style>
+	body {
+		font-family: system-ui, sans-serif;
+		line-height: 1.6;
+		color: #1a1a1a;
+		background: #f8f8f6;
+		margin: 0;
+		padding: 2rem 1rem;
+	}
+
+	main {
+		max-width: 740px;
+		margin: 0 auto;
+	}
+
+	h1 {
+		font-size: 2rem;
+		line-height: 1.2;
+	}
+
+	h2 {
+		margin-top: 2.5rem;
+	}
+
+	figure {
+		margin: 1.5rem 0;
+	}
+
+	figure img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 3px;
+	}
+
+	figcaption {
+		font-size: 0.875rem;
+		color: #666;
+		margin-top: 0.5rem;
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		margin: 1rem 0;
+	}
+
+	th, td {
+		text-align: left;
+		padding: 0.35rem 0.75rem;
+		border-bottom: 1px solid #e4e4e4;
+	}
+
+	thead th {
+		border-bottom: 2px solid #ccc;
+		font-size: 0.875rem;
+		color: #555;
+	}
+
+	td:nth-child(2), td:nth-child(4),
+	th:nth-child(2), th:nth-child(4) {
+		text-align: right;
+	}
+</style>
+
 <main>
 	<h1>Skyline Countries and Reflection Countries</h1>
 
 	<h2>What?</h2>
 
 	<p>
-		We compare the countries by their area and the highest elevation.
+		Consider comparing the countries by their area and the highest elevation.
 		If the geography was distributed randomly, larger countries would have higher probability to have the higher peaks while the smaller countries would be unlikely to have them.
 		And in general that's true on Earth, so let's focus on the outliers.
 
 	<p>
-		The ones whose elevation stands above their (size-wise) peers are called skyline countries here.
-		The Reflection? Those are the opposite ones.
+		The ones whose elevation stands above their (size-wise) peers are called <b>skyline countries</b> here.
+		And the <b>reflection countries</b>? Those are the ones opposite to skyline.
 
 	<figure>
 		<img src=assets/riga.jpg>
@@ -27,12 +91,13 @@
 
 	<p>
 		The general terms for the envelope entries on a plot is Pareto front.
-		For example, Liechtenstein is Pareto-efficient country.
-		Sure, you can find higher peaks than Grauspitz in the world, but to do that you must necessarily go to a larger country. If you go look at smaller countries you will only find lower points.
+		For example, Liechtenstein is a Pareto-efficient country:
+		sure, you can find higher peaks than Grauspitz in the world, but to do that you must necessarily go to a larger country.
+		If you go look at smaller countries you will only find lower points.
 
 	<p>The reflection countries are the ones who have unusually low highest points for their size.
-		Such as Australia or Lithuania who have such low highest points that you'd expect to find in countries 10x smaller than them.
-		You might probably describe them as Pareto-effective in the opposite direction. Pareto-defective.
+		For example all the other countries that are as big as Mauritania or larger all have higher peaks than Mauritania does.
+		You might probably describe them as Pareto-effective in the opposite direction. Pareto-defective. Poor in height.
 
 	<h2>Plot</h2>
 
@@ -44,21 +109,21 @@
 	<thead>
 		<tr><th>Country			<th>Area / km²	<th>Highest point		<th>Height / m
 	<tbody>
-		<tr><td>Nepal			<td>147 181		<th>Everest				<th>8849
-		<tr><td>Bhutan			<td>38 394		<th>Ganghar Puensum		<th>7571
-		<tr><td>Rwanda			<td>26 338		<th>Karisimbi			<th>4570
-		<tr><td>Lebanon			<td>10 400		<th>					<th>3088
-		<tr><td>Andorra			<td>468			<th>Coma Pedrosa		<th>2943
-		<tr><td>Liechtenstein	<td>160			<th>Grauspitz			<th>2599
-		<tr><td>San Marino		<td>61			<th>Monte Titano		<th>739
-		<tr><td>Monaco			<td>2.02		<th>Chemin des Revoires	<th>164
-		<tr><td>Vatican City	<td>0.44		<th>Vatican Hill		<th>75
+		<tr><td>Nepal			<td>147 181		<td>Everest				<td>8849
+		<tr><td>Bhutan			<td>38 394		<td>Ganghar Puensum		<td>7571
+		<tr><td>Rwanda			<td>26 338		<td>Karisimbi			<td>4570
+		<tr><td>Lebanon			<td>10 400		<td>					<td>3088
+		<tr><td>Andorra			<td>468			<td>Coma Pedrosa		<td>2943
+		<tr><td>Liechtenstein	<td>160			<td>Grauspitz			<td>2599
+		<tr><td>San Marino		<td>61			<td>Monte Titano		<td>739
+		<tr><td>Monaco			<td>2.02		<td>Chemin des Revoires	<td>164
+		<tr><td>Vatican City	<td>0.44		<td>Vatican Hill		<td>75
 	</table>
 
 	<p>Interestingly all of the European microstates are on the list.
 	For most of them terrain is among the reasons why they are a separate country in the first place.
 
-	Notable mentions:
+	<p>Notable mentions:
 	<ul>
 		<li>Tajikistan & Kyrgysztan (above 7400 m, below 200 000 km²) at the roof of the World
 		<li>Armenians has Ararat (5165 m) in their hearts (and on the coat of arms) which would allow them to replace Rwanda on the list
@@ -70,25 +135,25 @@
 	<thead>
 		<tr><th>Country			<th>Area / km²	<th>Highest point		<th>Height / m
 	<tbody>
-		<tr><td>Russia			<td>17 098 242	<th>Elbrus				<th>5642
-		<tr><td>Brazil			<td>8 515 770	<th>Pico da Neblina		<th>2995
-		<tr><td>Australia		<td>7 692 024	<th>Mount Kosciuszko	<th>2228
-		<tr><td>Niger			<td>1 267 000	<th>					<th>2022
-		<tr><td>Mali			<td>1 240 192	<th>					<th>1155
-		<tr><td>Mauritania		<td>1 030 70	<th>					<th>915
-		<tr><td>Paraguay		<td>406 752		<th>Cerro Pero			<th>842
-		<tr><td>Burkina Faso	<td>274 200		<th>					<th>747
-		<tr><td>Belarus			<td>207 600		<th>Dzyarzhanskaya Hara	<th>345
-		<tr><td>Lithuania		<td>65 300		<th>Aukštojas			<th>294
-		<tr><td>Denmark			<td>43 094		<th>					<th>171
-		<tr><td>Bahamas			<td>13 880		<th>					<th>63
-		<tr><td>Maldives		<td>298			<th>Villingili			<th>5
+		<tr><td>Russia			<td>17 098 242	<td>Elbrus				<td>5642
+		<tr><td>Brazil			<td>8 515 770	<td>Pico da Neblina		<td>2995
+		<tr><td>Australia		<td>7 692 024	<td>Mount Kosciuszko	<td>2228
+		<tr><td>Niger			<td>1 267 000	<td>					<td>2022
+		<tr><td>Mali			<td>1 240 192	<td>					<td>1155
+		<tr><td>Mauritania		<td>1 030 700	<td>					<td>915
+		<tr><td>Paraguay		<td>406 752		<td>Cerro Pero			<td>842
+		<tr><td>Burkina Faso	<td>274 200		<td>					<td>747
+		<tr><td>Belarus			<td>207 600		<td>Dzyarzhanskaya Hara	<td>345
+		<tr><td>Lithuania		<td>65 300		<td>Aukštojas			<td>294
+		<tr><td>Denmark			<td>43 094		<td>					<td	>171
+		<tr><td>Bahamas			<td>13 880		<td>					<td>63
+		<tr><td>Maldives		<td>298			<td>Villingili			<td>5
 	</table>
 
 	<p>Not fun, but fact: the whole of Australia is lower than some point in Liechtenstein.
 	Also Paraguay is larger than you expected, right? And you had no idea whether they have mountains or what, you probably didn't even think to think about that.
 
-	Notable mentions:
+	<p>Notable mentions:
 	<ul>
 		<li>Latvia nearly overlaps with Lithuania on the plot
 	</ul>
@@ -98,6 +163,12 @@
 	<ul>
 		<li><a href=https://github.com/factbook/factbook.json>Data from CIA World Factbook</a>
 		<li><a href=https://www.shutterstock.com/image-photo/riga-latvia-march-19-2015-beautiful-267877181>Image by Svetlana Dik from Shutterstock</a>
+	</ul>
+
+	Also see:
+	<ul>
+		<li><a href=https://en.wikipedia.org/wiki/Pareto_efficiency>Pareto efficiency on Wikipedia</a>
+		<li><a href=https://en.wikipedia.org/wiki/Pareto_front>Pareto front on Wikipedia</a>
 	</ul>
 
 	<h2>About</h2>
