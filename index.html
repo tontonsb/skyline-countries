@@ -68,6 +68,29 @@
 	th:nth-child(2), th:nth-child(4) {
 		text-align: right;
 	}
+
+	.plot-controls {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		margin: 0.75rem 0 0.5rem;
+		font-size: 0.875rem;
+	}
+
+	.plot-controls label {
+		cursor: pointer;
+		margin-right: 0.5rem;
+	}
+
+	#plot {
+		height: 520px;
+	}
+
+	.plot-hint {
+		font-size: 0.8rem;
+		color: #999;
+		margin-top: 0.25rem;
+	}
 </style>
 
 <main>
@@ -101,6 +124,21 @@
 
 	<h2>Plot</h2>
 
+	<div class="plot-controls">
+		<div>
+			<label><input type="radio" name="dataset" value="countries" checked> Countries</label>
+			<label><input type="radio" name="dataset" value="all"> Countries &amp; territories</label>
+		</div>
+		<div>
+			Y: <label><input type="radio" name="yscale" value="log" checked> Log</label>
+			<label><input type="radio" name="yscale" value="linear"> Linear</label>
+		</div>
+	</div>
+
+	<div id="plot"></div>
+
+	<p class="plot-hint">Click a point to exclude or restore it from the envelope calculation.</p>
+
 	<h2>List</h2>
 
 	<h3>Skyline countries</h3>
@@ -109,10 +147,10 @@
 	<thead>
 		<tr><th>Country			<th>Area / km²	<th>Highest point		<th>Height / m
 	<tbody>
-		<tr><td>Nepal			<td>147 181		<td>Everest				<td>8849
-		<tr><td>Bhutan			<td>38 394		<td>Ganghar Puensum		<td>7571
-		<tr><td>Rwanda			<td>26 338		<td>Karisimbi			<td>4570
-		<tr><td>Lebanon			<td>10 400		<td>					<td>3088
+		<tr><td>Nepal			<td>147 181		<td>Mount Everest		<td>8849
+		<tr><td>Bhutan			<td>38 394		<td>Gangkar Puensum		<td>7570
+		<tr><td>Rwanda			<td>26 338		<td>Volcan Karisimbi	<td>4519
+		<tr><td>Lebanon			<td>10 400		<td>Qurnat as Sawda		<td>3088
 		<tr><td>Andorra			<td>468			<td>Coma Pedrosa		<td>2943
 		<tr><td>Liechtenstein	<td>160			<td>Grauspitz			<td>2599
 		<tr><td>San Marino		<td>61			<td>Monte Titano		<td>739
@@ -182,3 +220,109 @@
 		<li>Discord: Džuris (@tontonsb)
 	</ul>
 </main>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="module">
+const state = { dataset: 'countries', yScale: 'linear', disabled: new Set() }
+
+const [countries, all] = await Promise.all([
+	fetch('assets/countries.json').then(r => r.json()),
+	fetch('assets/countries-and-dependencies.json').then(r => r.json()),
+])
+
+const plotEl = document.getElementById('plot')
+await Plotly.newPlot(plotEl, ...buildPlot())
+
+plotEl.on('plotly_click', ({ points }) => {
+	const name = points[0]?.customdata
+	if (!name)
+		return
+
+	state.disabled.has(name) ? state.disabled.delete(name) : state.disabled.add(name)
+	Plotly.react(plotEl, ...buildPlot())
+})
+
+for (const el of document.querySelectorAll('[name=dataset]'))
+	el.addEventListener('change', () => { state.dataset = el.value; Plotly.react(plotEl, ...buildPlot()) })
+
+for (const el of document.querySelectorAll('[name=yscale]'))
+	el.addEventListener('change', () => { state.yScale = el.value; Plotly.react(plotEl, ...buildPlot()) })
+
+function getElev(c) {
+	return c.highest?.elevation ?? null
+}
+
+function paretoFront(entries, findMax) {
+	// skyline: scan smallest→largest, track running max elevation
+	// reflection: scan largest→smallest, track running min elevation
+	const sorted = [...entries].sort((a, b) => findMax ? a.area - b.area : b.area - a.area)
+	let bound = findMax ? -Infinity : Infinity
+
+	return sorted.filter(c => {
+		const e = getElev(c)
+
+		if (e == null) return false
+
+		if (findMax ? e > bound : e < bound) {
+			bound = e
+			return true
+		}
+
+		return false
+	})
+}
+
+function buildPlot() {
+	const source = (state.dataset === 'countries' ? countries : all)
+		.filter(c => c.area > 0 && getElev(c) != null && (state.yScale !== 'log' || getElev(c) > 0))
+
+	const active = source.filter(c => !state.disabled.has(c.name))
+	const disabledEntries = source.filter(c => state.disabled.has(c.name))
+
+	const skylineSet = new Set(paretoFront(active, true).map(c => c.name))
+	const reflectionSet = new Set(paretoFront(active, false).map(c => c.name))
+
+	// skyline takes priority if a country appears on both fronts
+	const skyline = active.filter(c => skylineSet.has(c.name)).sort((a, b) => a.area - b.area)
+	const reflection = active.filter(c => reflectionSet.has(c.name) && !skylineSet.has(c.name)).sort((a, b) => a.area - b.area)
+	const regular = active.filter(c => !skylineSet.has(c.name) && !reflectionSet.has(c.name))
+
+	const hover = c => {
+		const areaFmt = c.area < 10 ? c.area : Math.round(c.area).toLocaleString()
+		return `<b>${c.name}</b><br>Area: ${areaFmt} km²<br>Highest point: ${getElev(c)} m${c.highest?.name ? `<br>${c.highest.name}` : ''}`
+	}
+
+	const trace = (entries, name, color, showLine, size = 8) => ({
+		x: entries.map(c => c.area),
+		y: entries.map(c => getElev(c)),
+		mode: showLine ? 'markers+lines' : 'markers',
+		type: 'scatter',
+		name,
+		customdata: entries.map(c => c.name),
+		text: entries.map(hover),
+		hoverinfo: 'text',
+		marker: { color, size },
+		...(showLine && { line: { color, width: 1.5 } }),
+	})
+
+	const traces = [
+		trace(regular, 'Countries', '#5dd9b8', false),
+		trace(skyline, 'Skyline front', '#f2a56b', true, 9),
+		trace(reflection, 'Reflection front', '#f26f5a', true, 9),
+		trace(disabledEntries, 'Excluded', '#aaaaaa', false),
+	]
+
+	const layout = {
+		paper_bgcolor: 'transparent',
+		plot_bgcolor: '#f5f4f0',
+		xaxis: { title: 'Area (km²)', type: 'log', gridcolor: '#e0deda' },
+		yaxis: { title: 'Highest elevation (m)', type: state.yScale, gridcolor: '#e0deda' },
+		margin: { t: 20, r: 20, b: 60, l: 70 },
+		legend: { orientation: 'h', y: -0.2 },
+		hovermode: 'closest',
+		font: { family: 'system-ui, sans-serif', size: 12 },
+	}
+
+	return [traces, layout, { responsive: true, displayModeBar: false }]
+}
+</script>
