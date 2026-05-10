@@ -100,27 +100,47 @@
 
 	<p>
 		Consider comparing the countries by their area and the highest elevation.
-		If the geography was distributed randomly, larger countries would have higher probability to have the higher peaks while the smaller countries would be unlikely to have them.
+		If mountainous terrain was distributed randomly, larger countries would have higher probability of containing the very high peaks while the smaller countries would be unlikely to have them.
 		And in general that's true on Earth, so let's focus on the outliers.
 
 	<p>
-		The ones whose elevation stands above their (size-wise) peers are called <b>skyline countries</b> here.
-		And the <b>reflection countries</b>? Those are the ones opposite to skyline.
+		The ones whose elevation stands above their (size-wise) peers are called <em>skyline countries</em> here.
+		And the ones whose elevation stands below their size-wise peers are called <em>reflection countries</em>. The contour formed by the opposite extremes, just like the reflection of a skyline in water.
 
 	<figure>
 		<img src=assets/riga.jpg>
 		<figcaption>Skyline countries are the ones whose highest peak elevation stands out</figcaption>
 	</figure>
 
+	<h3>Skyline countries</h3>
+
+	<p>Formal definition:
+		<dl>
+			<dt>Skyline country		<dd>A country such that no smaller country has a higher peak
+		</dl>
+
+	<p>The general term for the envelope entries on a plot is the <em>Pareto frontier</em>.
+
 	<p>
-		The general terms for the envelope entries on a plot is Pareto front.
-		For example, Liechtenstein is a Pareto-efficient country:
+		Liechtenstein is an example of being Pareto-efficient in this cross-section:
 		sure, you can find higher peaks than Grauspitz in the world, but to do that you must necessarily go to a larger country.
 		If you go look at smaller countries you will only find lower points.
 
-	<p>The reflection countries are the ones who have unusually low highest points for their size.
-		For example all the other countries that are as big as Mauritania or larger all have higher peaks than Mauritania does.
-		You might probably describe them as Pareto-effective in the opposite direction. Pareto-defective. Poor in height.
+	<p>Since "skyline countries" is a way to formalize the idea of "small but mountainous", the list is not exactly surprising.
+		People are aware that Nepal or Andorra would fit that description. But can you predict what would be on the other list?
+
+	<h3>Reflection countries</h3>
+
+	<p>Formal definition:
+		<dl>
+			<dt>Reflection country <dd>A country such that no larger country has a lower peak
+		</dl>
+
+	<p>The reflection countries are the ones that have unusually low highest points for their size — the ones that are so large that you'd expect them to have some higher mountains somewhere, but they don't.
+
+	<p>Example: all the other countries that are as big as Mauritania or larger all have higher peaks than Mauritania does.
+
+	<p>The reflection countries make the more surprising list since people do not usually expect Mali and Belarus to form a frontier of terrain extremes.
 
 	<h2>Plot</h2>
 
@@ -130,8 +150,8 @@
 			<label><input type="radio" name="dataset" value="all"> Countries &amp; territories</label>
 		</div>
 		<div>
-			Y: <label><input type="radio" name="yscale" value="log" checked> Log</label>
-			<label><input type="radio" name="yscale" value="linear"> Linear</label>
+			Y: <label><input type="radio" name="yscale" value="log"> Log</label>
+			<label><input type="radio" name="yscale" value="linear" checked> Linear</label>
 		</div>
 	</div>
 
@@ -148,14 +168,14 @@
 		<tr><th>Country			<th>Area / km²	<th>Highest point		<th>Height / m
 	<tbody>
 		<tr><td>Nepal			<td>147 181		<td>Mount Everest		<td>8849
-		<tr><td>Bhutan			<td>38 394		<td>Gangkar Puensum		<td>7570
-		<tr><td>Rwanda			<td>26 338		<td>Volcan Karisimbi	<td>4519
-		<tr><td>Lebanon			<td>10 400		<td>Qurnat as Sawda		<td>3088
-		<tr><td>Andorra			<td>468			<td>Coma Pedrosa		<td>2943
+		<tr><td>Bhutan			<td>38 394		<td>Gangkhar Puensum	<td>7570
+		<tr><td>Rwanda			<td>26 338		<td>Mount Karisimbi		<td>4507
+		<tr><td>Lebanon			<td>10 452		<td>Qurnat as Sawda		<td>3088
+		<tr><td>Andorra			<td>468			<td>Coma Pedrosa		<td>2942
 		<tr><td>Liechtenstein	<td>160			<td>Grauspitz			<td>2599
-		<tr><td>San Marino		<td>61			<td>Monte Titano		<td>739
-		<tr><td>Monaco			<td>2.02		<td>Chemin des Revoires	<td>164
-		<tr><td>Vatican City	<td>0.44		<td>Vatican Hill		<td>75
+		<tr><td>San Marino		<td>61			<td>Monte Titano		<td>756
+		<tr><td>Monaco			<td>2.08		<td>Chemin des Révoires	<td>162
+		<tr><td>Vatican City	<td>0.49		<td>Vatican Hill		<td>75
 	</table>
 
 	<p>Interestingly all of the European microstates are on the list.
@@ -163,37 +183,45 @@
 
 	<p>Notable mentions:
 	<ul>
-		<li>Tajikistan & Kyrgysztan (above 7400 m, below 200 000 km²) at the roof of the World
-		<li>Armenians has Ararat (5165 m) in their hearts (and on the coat of arms) which would allow them to replace Rwanda on the list
+		<li>Tajikistan & Kyrgyzstan (above 7400 m, below 200 000 km²) at the roof of the World.
+		<li>In fact Tajikistan along with Georgia and Switzerland would be on the list if it wasn't for Bhutan.
+		<li>Armenians have Ararat (5165 m) in their hearts (and on the coat of arms) which would allow them to replace Rwanda on the list.
+		<li>Andorra and Liechtenstein are extreme outliers who prevent six countries from getting in the skyline list: Cabo Verde, Comoros, São Tomé and Príncipe, Dominica, Saint Vincent and the Grenadines, Saint Kitts and Nevis.
 	</ul>
 
 	<h3>Reflection countries</h3>
 
 	<table>
 	<thead>
-		<tr><th>Country			<th>Area / km²	<th>Highest point		<th>Height / m
+		<tr><th>Country			<th>Area / km²	<th>Highest point			<th>Height / m
 	<tbody>
-		<tr><td>Russia			<td>17 098 242	<td>Elbrus				<td>5642
-		<tr><td>Brazil			<td>8 515 770	<td>Pico da Neblina		<td>2995
-		<tr><td>Australia		<td>7 692 024	<td>Mount Kosciuszko	<td>2228
-		<tr><td>Niger			<td>1 267 000	<td>					<td>2022
-		<tr><td>Mali			<td>1 240 192	<td>					<td>1155
-		<tr><td>Mauritania		<td>1 030 700	<td>					<td>915
-		<tr><td>Paraguay		<td>406 752		<td>Cerro Pero			<td>842
-		<tr><td>Burkina Faso	<td>274 200		<td>					<td>747
-		<tr><td>Belarus			<td>207 600		<td>Dzyarzhanskaya Hara	<td>345
-		<tr><td>Lithuania		<td>65 300		<td>Aukštojas			<td>294
-		<tr><td>Denmark			<td>43 094		<td>					<td	>171
-		<tr><td>Bahamas			<td>13 880		<td>					<td>63
-		<tr><td>Maldives		<td>298			<td>Villingili			<td>5
+		<tr><td>Russia			<td>17 075 400	<td>Mount Elbrus			<td>5642
+		<tr><td>Brazil			<td>8 515 767	<td>Pico da Neblina			<td>2994
+		<tr><td>Australia		<td>7 692 024	<td>Mount Kosciuszko		<td>2228
+		<tr><td>Libya			<td>1 759 541	<td>Bikku Bitti				<td>2267
+		<tr><td>Niger			<td>1 267 000	<td>Mont Idoukal-n-Taghès	<td>2022
+		<tr><td>Mali			<td>1 240 192	<td>Hombori Tondo			<td>1153
+		<tr><td>Mauritania		<td>1 030 700	<td>Kediet et Jill			<td>915
+		<tr><td>Paraguay		<td>406 752		<td>Cerro Tres Kandú		<td>842
+		<tr><td>Burkina Faso	<td>274 200		<td>Mount Tenakourou		<td>749
+		<tr><td>Belarus			<td>207 597		<td>Dzyarzhynskaya Hara		<td>345
+		<tr><td>Lithuania		<td>65 300		<td>Aukštojas Hill			<td>294
+		<tr><td>Denmark			<td>43 094		<td>Møllehøj				<td>171
+		<tr><td>Bahamas			<td>13 878		<td>Mount Alvernia			<td>63
+		<tr><td>Maldives		<td>298			<td>Addu City				<td>2
+		<caption>
+			Some sources include Mount Vilingili at 5 m for Maldives. Their role in the list would remain unchanged. Changing Australia's definition to include Mawson Peak (2745 m on Heard Island) would let Libya on the list.
+		</caption>
 	</table>
 
 	<p>Not fun, but fact: the whole of Australia is lower than some point in Liechtenstein.
-	Also Paraguay is larger than you expected, right? And you had no idea whether they have mountains or what, you probably didn't even think to think about that.
+	Also Paraguay is larger than you expected, right? And you likely had no mental image of their mountain-ness at all.?
 
 	<p>Notable mentions:
 	<ul>
-		<li>Latvia nearly overlaps with Lithuania on the plot
+		<li>Latvia nearly overlaps with Lithuania on the plot.
+		<li>Senegal and Uruguay would be in the list in absence of Belarus.
+		<li>Similarly Qatar & Kiribati are blocked by The Bahamas while Marshall Islands and Tuvalu by Maldives.
 	</ul>
 
 	<h2>reSources</h2>
@@ -202,6 +230,9 @@
 		<li><a href=https://www.wikidata.org>Data from Wikidata</a>
 		<li><a href=https://www.shutterstock.com/image-photo/riga-latvia-march-19-2015-beautiful-267877181>Image by Svetlana Dik from Shutterstock</a>
 	</ul>
+
+	<p>But some data are hand patched, e.g. removed Mawson peak (on Heard & McDonald islands) for Australia in favor of Mount Kosciuszko which is on mainland Australia.
+		And changed Kuwait's highest point.
 
 	Also see:
 	<ul>
