@@ -99,8 +99,8 @@
 		"name": "Australia",
 		"area": 7692024,
 		"highest": {
-			"name": "Mawson Peak",
-			"elevation": 2745
+			"name": "Mount Kosciuszko",
+			"elevation": 2228
 		},
 		"lowest": {
 			"name": "Kati Thanda–Lake Eyre",
@@ -501,6 +501,18 @@
 		"lowest": {
 			"name": "Atlantic Ocean",
 			"elevation": 0
+		}
+	},
+	{
+		"name": "Denmark",
+		"area": 42925.46,
+		"highest": {
+			"name": "Møllehøj",
+			"elevation": 171
+		},
+		"lowest": {
+			"name": "Lammefjord",
+			"elevation": null
 		}
 	},
 	{
@@ -1041,8 +1053,8 @@
 		"name": "Kuwait",
 		"area": 17818,
 		"highest": {
-			"name": "Mutla Ridge",
-			"elevation": 140
+			"name": "unnamed",
+			"elevation": 306
 		},
 		"lowest": {
 			"name": "Persian Gulf",
