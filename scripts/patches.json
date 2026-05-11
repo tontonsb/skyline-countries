@@ -1,0 +1,14 @@
+{
+	"Australia": {
+		"highest": {
+			"name": "Mount Kosciuszko",
+			"elevation": 2228
+		}
+	},
+	"Kuwait": {
+		"highest": {
+			"name": "unnamed location",
+			"elevation": 291
+		}
+	}
+}
